@@ -15,7 +15,6 @@ import com.example.z.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     PunktyViewModel punktyViewModel;
-    int punkty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,26 +22,26 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         punktyViewModel=new ViewModelProvider(this).get(PunktyViewModel.class);
-        binding.textView.setText(" "+punkty);
+        binding.textView.setText(" "+punktyViewModel.getPunkty());
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                punkty ++;
-                binding.textView.setText(" "+punkty);
+                punktyViewModel.addPunkty(1);
+                binding.textView.setText(" "+punktyViewModel.getPunkty());
             }
         });
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                punkty +=2;
-                binding.textView.setText(" "+punkty);
+                punktyViewModel.addPunkty(2);
+                binding.textView.setText(" "+punktyViewModel.getPunkty());
             }
         });
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                punkty +=3;
-                binding.textView.setText(" "+punkty);
+                punktyViewModel.addPunkty(3);
+                binding.textView.setText(" "+punktyViewModel.getPunkty());
             }
         });
     }
